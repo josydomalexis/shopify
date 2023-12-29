@@ -1,0 +1,13 @@
+.checkoutProductDetail {
+  width: 50%;
+}
+
+.checkoutProductQuantity {
+  margin-right: 30px;
+}
+
+.checkoutImage {
+  width: 300px;
+  height: 200px;
+  object-fit: scale-down;
+}
