@@ -11,7 +11,9 @@ function Products() {
       <div className="container px-4 px-lg-5 mt-5">
         <div className="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
           {productList.map((product, index) => {
-            return <ProductListCards index={product.id} data={product} />;
+            return (
+              <ProductListCards key={index} index={product.id} data={product} />
+            );
           })}
         </div>
       </div>

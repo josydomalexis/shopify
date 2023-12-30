@@ -38,8 +38,13 @@ function Navbar() {
             </li>
           </ul>
           <div className="ms-md-auto">
-            <Link to="/CheckOut" class="btn btn-outline-dark">
-              Cart <span class="badge text-bg-dark">{cart.length}</span>
+            <Link to="/CheckOut" className="btn btn-outline-dark">
+              Cart{" "}
+              <span className="badge text-bg-dark">
+                {cart.reduce((total, product) => {
+                  return total + product.quantity;
+                }, 0)}
+              </span>
             </Link>
           </div>
         </div>
