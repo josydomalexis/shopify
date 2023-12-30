@@ -10,7 +10,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg bg-warning bg-gradient">
       <div className="container-fluid">
         <a className="navbar-brand" title="Shopping" href="#">
-          Shopify
+          <b>SHOPIFY</b>
         </a>
 
         <button
@@ -38,14 +38,23 @@ function Navbar() {
             </li>
           </ul>
           <div className="ms-md-auto">
-            <Link to="/CheckOut" className="btn btn-outline-dark">
-              Cart{" "}
-              <span className="badge text-bg-dark">
-                {cart.reduce((total, product) => {
-                  return total + product.quantity;
-                }, 0)}
-              </span>
-            </Link>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/orders">
+                  Orders
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/checkout" className="btn btn-outline-dark">
+                  Cart{" "}
+                  <span className="badge text-bg-dark">
+                    {cart.reduce((total, product) => {
+                      return total + product.quantity;
+                    }, 0)}
+                  </span>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

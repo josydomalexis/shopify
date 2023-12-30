@@ -1,9 +1,11 @@
 import { dataSet } from "./Main";
 import { useContext } from "react";
+
 import "./CheckOut.css";
+import TotalCalculation from "./TotalCalculation";
 
 function CheckOut() {
-  const { DATA, cart, AddQuantity } = useContext(dataSet);
+  const { DATA, cart, AddQuantity, removeFromCart } = useContext(dataSet);
   const dataMin = DATA.products;
   //   console.log(dataMin);
 
@@ -42,34 +44,24 @@ function CheckOut() {
                 <div>{dataMin[item.id - 1].price * item.quantity}</div>
               </div>
             </div>
+            <div className="d-flex justify-content-end mb-5">
+              <a
+                className="btn btn-outline-danger"
+                href="#"
+                onClick={() => {
+                  removeFromCart(item.id);
+                }}
+              >
+                Remove
+              </a>
+            </div>
           </li>
         ))}
-        <li className="list-group-item">
-          <div className="d-flex justify-content-between">
-            <div>SUBTOTAL :</div>
-            <div>
-              {/* {" "}
-              {cart.reduce((total, obj) => {
-                return total + dataMin[obj.id].price;
-              })} */}
-              {cart.reduce(
-                (total, product, index) =>
-                  total + dataMin[product.id - 1].price * product.quantity,
-                0
-              )}
-            </div>
-          </div>
-          <div className="d-flex justify-content-between">
-            <div>Shipping :</div>
-            <div>Free</div>
-          </div>
-          <div className="d-flex justify-content-between">
-            <div>Total :</div>
-            <div>
-              <div>$000</div>
-            </div>
-          </div>
-        </li>
+        {cart.length !== 0 ? (
+          <TotalCalculation />
+        ) : (
+          <h3 className="text-center">Cart Empty</h3>
+        )}
       </ul>
     </div>
   );
