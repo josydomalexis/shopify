@@ -3,6 +3,7 @@ import { useContext } from "react";
 
 import "./CheckOut.css";
 import TotalCalculation from "./TotalCalculation";
+import { Link } from "react-router-dom";
 
 function CheckOut() {
   const { DATA, cart, AddQuantity, removeFromCart } = useContext(dataSet);
@@ -10,24 +11,24 @@ function CheckOut() {
   //   console.log(dataMin);
 
   return (
-    <div className="container px-4 px-lg-5 mt-5">
+    <div className="container px-4 px-lg-5 mt-5 min-vh-100">
       <ul className="list-group list-group-flush">
         {cart.map((item, index) => (
           <li key={index} className="list-group-item">
-            <div key={index} className="d-flex justify-content-between">
+            <div key={index} className="d-flex justify-content-between py-2">
               <img
                 className="checkoutImage"
                 alt={dataMin[item.id - 1].title}
                 src={dataMin[item.id - 1].thumbnail}
               />
-              <div className="checkoutProductDetail">
+              <div className="checkoutProductDetail py-2">
                 <h2>{dataMin[item.id - 1].title}</h2>
                 <p>{dataMin[item.id - 1].description}</p>
               </div>
               <div className="d-flex">
                 <div className="checkoutProductQuantity">
                   <form>
-                    <input
+                    {/* <input
                       type="number"
                       id="quantity"
                       name="quantity"
@@ -38,7 +39,19 @@ function CheckOut() {
                       onChange={(e) => {
                         AddQuantity(item.id, e.target.value);
                       }}
-                    />
+                    /> */}
+                    <select
+                      value={item.quantity}
+                      onChange={(e) => {
+                        AddQuantity(item.id, e.target.value);
+                      }}
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
                   </form>
                 </div>
                 <div>{dataMin[item.id - 1].price * item.quantity}</div>
@@ -60,7 +73,15 @@ function CheckOut() {
         {cart.length !== 0 ? (
           <TotalCalculation />
         ) : (
-          <h3 className="text-center">Cart Empty</h3>
+          <>
+            <h3 className="text-center">Cart Empty</h3>
+            <p className="text-center mt-5">
+              Please check your previous orders
+              <Link className="btn btn-primary mx-2" to="/orders">
+                Track Orders <i className="bi bi-arrow-right-circle"></i>
+              </Link>
+            </p>
+          </>
         )}
       </ul>
     </div>

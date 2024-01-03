@@ -7,11 +7,11 @@ function Navbar() {
   const [cartCount, setCartCount] = useState(0);
   const { cart } = useContext(dataSet);
   return (
-    <nav className="navbar navbar-expand-lg bg-warning bg-gradient">
+    <nav className="navbar navbar-expand-lg bg-warning bg-gradient sticky-top">
       <div className="container-fluid">
-        <a className="navbar-brand" title="Shopping" href="#">
+        <Link className="navbar-brand" title="Shopping" to="/">
           <b>SHOPIFY</b>
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -27,26 +27,26 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/products">
-                Products
+                Shop
               </Link>
             </li>
           </ul>
           <div className="ms-md-auto">
             <ul className="navbar-nav">
+              {/* <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/orders">
                   Orders
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/checkout" className="btn btn-outline-dark">
-                  Cart{" "}
+                <Link to="/checkout" className="btn ">
+                  <i className="bi bi-cart2"> </i>
                   <span className="badge text-bg-dark">
                     {cart.reduce((total, product) => {
                       return total + product.quantity;

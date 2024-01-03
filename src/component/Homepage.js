@@ -1,27 +1,29 @@
 import React from "react";
+import { useContext } from "react";
+import { dataSet } from "./Main";
 import "./Homepage.css";
 
 function Homepage() {
+  const { cart, carosalImages } = useContext(dataSet);
   return (
-    <div className="home">
+    <div className="home min-vh-100">
       <div className="hero">
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <div className="heroSlider bg-dark">
-                <img src="..." className="d-block w-100" alt="..." />
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="heroSlider bg-body-secondary">
-                <img src="..." className="d-block w-100" alt="..." />
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="heroSlider bg-dark-subtle">
-                <img src="..." className="d-block w-100" alt="..." />
-              </div>
-            </div>
+            {carosalImages.map((img, index) => {
+              return (
+                <div
+                  key={index}
+                  className={
+                    index === 0 ? "carousel-item active" : "carousel-item"
+                  }
+                >
+                  <div className="heroSlider">
+                    <img src={img.img} className="d-block w-100" alt="..." />
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <button
             className="carousel-control-prev"

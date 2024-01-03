@@ -1,11 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { DATA } from "../config/Config";
+import { DATA } from "./ProductsData";
 import Products from "./Products";
 import CheckOut from "./CheckOut";
 import Navbar from "./Navbar";
 import Homepage from "./Homepage";
 import Orders from "./Orders";
+import Login from "./Login";
+import Footer from "./Footer";
 
 export const dataSet = createContext(); //create
 
@@ -13,14 +15,19 @@ function Main() {
   const [cart, setCart] = useState([]);
   const [order, setOrder] = useState([]);
   //   const [quantity, setQuantity] = useState([]);
+  const carosalImages = [
+    {
+      img: "https://images-eu.ssl-images-amazon.com/images/G/31/img22/PB/Brands_days/Furniture-Branddays_Hero_3000x1200_PC._CB585191610_.jpg",
+    },
+    {
+      img: "https://images-eu.ssl-images-amazon.com/images/G/31/OHL/24/GW/BAU/Jan/Hero/PC_hero_1_2x._CB585230932_.jpg",
+    },
+    {
+      img: "https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/OnePlus/OnePlus12/C3/D108792004_WLD_OnePlus_Waffle_NewLaunch_DesktopTall_Hero_3000x1200._CB587004316_.jpg",
+    },
+  ];
 
   const AddToCart = (id) => {
-    // console.log(
-    //   cart.findIndex((value) => {
-    //     return value.id === id;
-    //   })
-    // );
-
     let cartProductIndex = cart.findIndex((value) => {
       return value.id === id;
     });
@@ -91,6 +98,7 @@ function Main() {
         cart,
         order,
         makePayment,
+        carosalImages,
       }}
     >
       <Navbar />
@@ -100,7 +108,9 @@ function Main() {
         {/* <Route path="/product/:productid" element={<CheckOut />} /> */}
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/orders" element={<Orders />} />
+        {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
+      <Footer />
     </dataSet.Provider>
   );
 }

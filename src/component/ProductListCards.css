@@ -1,0 +1,15 @@
+.addToCartBtn {
+  position: absolute;
+  z-index: 9;
+  margin-left: -12.5%;
+  bottom: 25px;
+}
+
+.productCart {
+  position: relative !important;
+  text-align: center;
+}
+
+.productCardFooter {
+  padding: 0 0 70px 0;
+}

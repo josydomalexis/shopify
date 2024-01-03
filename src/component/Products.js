@@ -7,9 +7,9 @@ function Products() {
   const productList = DATA.products;
 
   return (
-    <section className="py-5">
+    <section className="py-2 min-vh-100">
       <div className="container px-4 px-lg-5 mt-5">
-        <div className="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+        <div className="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-start">
           {productList.map((product, index) => {
             return (
               <ProductListCards key={index} index={product.id} data={product} />

@@ -10,7 +10,7 @@ function TotalCalculation() {
   return (
     <>
       <li className="list-group-item">
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between pt-5">
           <div>SUBTOTAL :</div>
           <div>
             {cart.reduce(
@@ -24,7 +24,7 @@ function TotalCalculation() {
           <div>Shipping :</div>
           <div>Free</div>
         </div>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between  py-5">
           <div>Total :</div>
           <div>
             <div>
@@ -38,7 +38,7 @@ function TotalCalculation() {
         </div>
       </li>
       <li className="list-group-item">
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end py-5">
           {cart.length !== 0 ? (
             <a
               href="#"
